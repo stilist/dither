@@ -3,8 +3,17 @@
   img.src = 'rhino.jpg'
 
   var ditherers = [
+    Dither.Threshold,
+    Dither.Naive,
+    Dither.Random,
+    Dither.FloydSteinberg,
+    Dither.JarvisJudiceNinke,
+    Dither.Stucki,
     Dither.Atkinson,
-    Dither.FloydSteinberg
+    Dither.Burkes,
+    Dither.SierraLite,
+    Dither.Sierra2,
+    Dither.Sierra3
   ]
 
   img.onload = function () {
