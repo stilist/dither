@@ -3,10 +3,36 @@
   <head>
     <meta charset='utf-8'>
     <title>Dithering algorithms</title>
+    <style>
+body {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+.renderings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rendering {
+  float: left;
+}
+.rendering-name {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+}
+    </style>
   </head>
 
   <body>
-    <canvas id=source width=300 height=227></canvas>
+    <ul class=renderings>
+      <li class=rendering>
+        <h2 class=rendering-name>Original</h2>
+        <canvas id=source width=300 height=227></canvas>
+      </li>
+    </ul>
 
     <script src='javascripts/dither.js'></script>
     <script src='javascripts/atkinson.js'></script>

@@ -10,18 +10,45 @@ var Dither = (Dither || {})
 Dither.apply = function (ditherer) {
   var source = document.getElementById('source')
 
-  var target = document.createElement('canvas')
-  target.height = source.height
-  target.width = source.width
-  source.parentNode.
-    insertBefore(target, source.nextSibling)
-
+  var target = this.buildCanvas(ditherer)
   var target_surface = target.getContext('2d')
   target_surface.drawImage(source, 0, 0)
   var image_data = target_surface.getImageData(0, 0, target.width, target.height)
 
   var dithered_data = ditherer(image_data, target.width, target.height)
   target_surface.putImageData(dithered_data, 0, 0)
+}
+
+/**
+ * Adds a new `.rendering` node.
+ *
+ * @return {HTMLCanvasElement}
+ */
+Dither.buildCanvas = function (ditherer) {
+  var source = document.getElementById('source')
+  var renderings = document.getElementsByClassName('renderings')[0]
+
+  var rendering = document.createElement('li')
+  rendering.classList.
+    add('rendering')
+
+  if (ditherer.prototype.name) {
+    var name = document.createElement('h2')
+    name.classList.
+      add('rendering-name')
+    var text = document.createTextNode(ditherer.prototype.name)
+    name.appendChild(text)
+    rendering.appendChild(name)
+  }
+
+  var canvas = document.createElement('canvas')
+  canvas.height = source.height
+  canvas.width = source.width
+  rendering.appendChild(canvas)
+
+  renderings.appendChild(rendering)
+
+  return canvas
 }
 
 /**
