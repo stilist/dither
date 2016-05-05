@@ -1,5 +1,6 @@
 /**
- * Dithers an image using the Floyd-Steinberg algorithm.
+ * Dithers an image using the Floyd-Steinberg algorithm, created by Robert
+ * Floyd and Louis Steinberg in 1976.
  *
  * For the pixel at x:
  * 1. convert to grayscale
@@ -7,14 +8,16 @@
  * 3. calculate quantized error (gray - snapped value)
  * 4. diffuse the error to surrounding pixels
  *
- *         x   7/16
- *   3/16 5/16 1/16
+ *      x  7
+ *   3  5  1
+ *
+ *    (1/16)
  *
  * @param ImageData {data}
  * @param Number {width}
  * @param Number {height}
  *
- * @see https://en.wikipedia.org/wiki/Floyd–Steinberg_dithering
+ * @see http://www.tannerhelland.com/4660/dithering-eleven-algorithms-source-code/
  */
 Dither.FloydSteinberg = function (image_data, width, height) {
   var data = image_data.data
@@ -65,3 +68,6 @@ Dither.FloydSteinberg = function (image_data, width, height) {
 
   return image_data
 }
+Dither.FloydSteinberg.
+  prototype.
+  name = 'Floyd-Steinberg'

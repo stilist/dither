@@ -1,5 +1,5 @@
 /**
- * Dithers an image using the Atkinson algorithm.
+ * Dithers an image using the Atkinson algorithm. Created by Bill Atkinson.
  *
  * For the pixel at x:
  * 1. convert to grayscale
@@ -7,13 +7,17 @@
  * 3. calculate quantized error (gray - snapped value)
  * 4. diffuse 3/4 of the error equally to surrounding pixels
  *
- *        x  1/8 1/8
- *   1/8 1/8 1/8
- *       1/8
+ *      x  1  1
+ *   1  1  1
+ *      1
+ *
+ *    (1/8)
  *
  * @param ImageData {data}
  * @param Number {width}
  * @param Number {height}
+ *
+ * @see http://www.tannerhelland.com/4660/dithering-eleven-algorithms-source-code/
  */
 Dither.Atkinson = function (image_data, width, height) {
   var data = image_data.data
@@ -80,3 +84,6 @@ Dither.Atkinson = function (image_data, width, height) {
 
   return image_data
 }
+Dither.Atkinson.
+  prototype.
+  name = 'Atkinson'
