@@ -1,29 +1,43 @@
-(function () {
+'use strict'
+
+var DitherApplication = function () {
+  this.current_image = 'rhino.jpg'
+
+  this.render()
+}
+DitherApplication.prototype.render = function () {
   var img = new Image()
-  img.src = 'rhino.jpg'
+  img.src = this.current_image
 
-  var ditherers = [
-    Dither.Threshold,
-    Dither.Naive,
-    Dither.Random,
-    Dither.FloydSteinberg,
-    Dither.JarvisJudiceNinke,
-    Dither.Stucki,
-    Dither.Atkinson,
-    Dither.Burkes,
-    Dither.SierraLite,
-    Dither.Sierra2,
-    Dither.Sierra3
-  ]
-
+  var _t = this
   img.onload = function () {
-    var surface = document.getElementById('source').
-      getContext('2d')
+    var source = document.getElementById('source')
+    source.height = img.height
+    source.width = img.width
+
+    var surface = source.getContext('2d')
     surface.drawImage(img, 0, 0)
     img.style.display = 'none'
 
-    for (var i = 0; i < ditherers.length; i++) {
-      Dither.apply(ditherers[i])
+    var len = _t.algorithms.
+      length
+    for (var i = 0; i < len; i++) {
+      Dither.apply(_t.algorithms[i])
     }
   }
-})()
+}
+DitherApplication.prototype.algorithms = [
+  Dither.Threshold,
+  Dither.Naive,
+  Dither.Random,
+  Dither.FloydSteinberg,
+  Dither.JarvisJudiceNinke,
+  Dither.Stucki,
+  Dither.Atkinson,
+  Dither.Burkes,
+  Dither.SierraLite,
+  Dither.Sierra2,
+  Dither.Sierra3
+]
+
+new DitherApplication()
