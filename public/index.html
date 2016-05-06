@@ -27,8 +27,16 @@ body {
   </head>
 
   <body>
+    <select id=source_image>
+      <option value=dogs>Dogs</option>
+      <option value=garden>Japanese Garden</option>
+      <option value=graffiti>Graffiti</option>
+      <option value=rhino>Rhino</option>
+      <option value=sunset>Sunset</option>
+    </select>
+
     <ul class=renderings>
-      <li class=rendering>
+      <li class='rendering rendering--source'>
         <h2 class=rendering-name>Original</h2>
         <canvas id=source></canvas>
       </li>

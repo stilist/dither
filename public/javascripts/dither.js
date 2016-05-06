@@ -31,6 +31,8 @@ Dither.buildCanvas = function (ditherer) {
   var rendering = document.createElement('li')
   rendering.classList.
     add('rendering')
+  rendering.classList.
+    add('rendering--dither')
 
   if (ditherer.prototype.name) {
     var name = document.createElement('h2')
